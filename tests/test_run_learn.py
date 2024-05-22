@@ -3,6 +3,8 @@ Tests for whatshap learn module
 
 """
 
+import sys
+
 from whatshap.cli.learn import run_learn
 import filecmp
 
@@ -18,4 +20,5 @@ def test_run_learn(tmp_path):
         window=25,
         output=observed,
     )
-    assert filecmp.cmp(expected, observed, shallow=True)
+    print(observed.read_text(), file=sys.stderr)
+    assert filecmp.cmp(expected, observed)
